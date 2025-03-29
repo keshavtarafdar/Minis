@@ -33,16 +33,18 @@ const SudokuGrid = () => {
     );
 
     /**
-     * Updates a specific Cell in the grid.
+     * Updates a specific Cell in the grid. Triggered by user input
+     * changing Cell value; loops through grid and re-renders the changed
+     * Cell.
      * 
      * .map() iterates over an array, applies given function to each
      * element in that array, and then returns the resulting array.
      * It provides both the current value and index as arguments
      * passed to the callback function!
     */
-    const handleCellChange = (e) => {
-        const newGrid = grid.map((r, rowIndex) =>
-            r.map((cell, colIndex) => {
+    const handleCellChange = (row, col, newValue) => {
+        const newGrid = grid.map((r, rowIndex) => // for each row
+            r.map((cell, colIndex) => { // for each cell in the row
                 if (rowIndex === row && colIndex === col) {
                     return { ...cell, value: newValue };
                 }
@@ -78,7 +80,7 @@ const SudokuGrid = () => {
                             value ={cell.value}
                             isEditable={cell.isEditable}
                             isNotesMode={isNotesMode}
-                            onChange={(newValue) => handleCellChange(rowIndex, colIndex)}
+                            onChange={(newValue) => handleCellChange(rowIndex, colIndex, newValue)}
                             onSelect={() => handleCellSelect(rowIndex, colIndex)}
                             isSelected={selectedCell?.row === rowIndex && selectedCell?.col === colIndex}
                             notes ={cell.notes}

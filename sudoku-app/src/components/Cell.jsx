@@ -31,6 +31,11 @@ const Cell = ({ value, isEditable, isNotesMode, onChange, isSelected, onSelect, 
     const [inputValue, setInputValue] = useState(value || '');
     const [cellNotes, setCellNotes] = useState(notes || []);
 
+    /**
+     * Triggered by the data structure's onChange -- grabs user input,
+     * checks if it is a valid input, checks if notes mode is on, and then 
+     * changes the "backend" representation of the Cell' value correspondingly
+     */
     const handleInputChange = (e) => {
         /**
          * e, the event object, stores user input here.
