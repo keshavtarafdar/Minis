@@ -2,9 +2,7 @@
     display: grid;
     grid-template-columns: repeat(9, 40px); /* 9 columns of 40px width */
     gap: 2px; /* between cells */
-    margin: 0 auto; /* horizontally centers grid on the page */
-    /* Shorthand - 0 is the top/bottom margin and auto is the left/right margin
-    */
+    margin-bottom: 20px;
 }
 
 .row {

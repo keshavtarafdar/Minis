@@ -51,8 +51,6 @@ const Cell = ({ value, isEditable, isNotesMode, onChange, isSelected, onSelect, 
         }
     };
 
-    const handleFocus = () => { onSelect(); };
-
     return (
         <div
             /**
@@ -61,7 +59,7 @@ const Cell = ({ value, isEditable, isNotesMode, onChange, isSelected, onSelect, 
              * in a CSS file!
              */
             className={`cell ${isEditable ? 'editable' : ''} ${isSelected ? 'selected' : ''}`}
-            onClick={handleFocus}
+            onClick={onSelect}
         >
             {isNotesMode && isEditable ? ( // ternary operator!
                 <div className='notes'>

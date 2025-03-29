@@ -89,9 +89,6 @@ const SudokuGrid = () => {
                     ))}
                 </div>
             ))}
-            <button onClick={toggleNotesMode}>
-                Notes ({isNotesMode ? 'On' : 'Off'})
-            </button>
         </div>
     );
 };

@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className='App'>
       <h1>Sudoku</h1>
-      <SudokuGrid />
+      <SudokuGrid/>
     </div>
   );
 };
