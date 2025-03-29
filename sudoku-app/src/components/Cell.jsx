@@ -11,7 +11,8 @@ import React, { useState } from 'react';
 
 /**
  * Components are functions that return JSX - a JSX element is a combination of JS
- * and HTML tags. This is a functional component.
+ * and HTML tags. This is a functional component, representing one individual
+ * cell/square in the puzzle.
  * 
  * value - current displayed value
  * isEditable & isNoteMode - booleans
@@ -19,7 +20,7 @@ import React, { useState } from 'react';
  * onSelect - callback function for when cell is selected
  * notes - array of notes
 */ 
-const Cell = ({value, isEditable, isNotesMode, onChange, isSelected, onSelect, notes}) => {
+const Cell = ({ value, isEditable, isNotesMode, onChange, isSelected, onSelect, notes }) => {
 
     /**
      * - creates an inputValue variable WITH STATE, setting it to the value parameter 
