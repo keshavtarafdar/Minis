@@ -52,7 +52,7 @@ const SudokuGrid = () => {
         setGrid(newGrid);
     };
     
-    // sets the currently selected Cell
+    // Sets currently selected Cell given row and col in grid
     const handleCellSelect = (row, col) => {
         setSelectedCell({ row, col });
     };
@@ -61,11 +61,18 @@ const SudokuGrid = () => {
         setIsNotesMode(!isNotesMode);
     };
 
+    // Renders a Cell component for each element in the grid.
     return (
         <div className='sudoku-grid'>
-            {grid.map((row, rowIndex) => (
+            {grid.map((row, rowIndex) => ( // looping through rows
                 <div className='row' key={rowIndex}>
-                    {row.map((cell, colIndex) => (
+                    {row.map((cell, colIndex) => ( // looping through cells of each row
+                        /**
+                         * For each cell, render a new Cell component -
+                         * remember, we defined Cell as a functional 
+                         * component! That's why this "constructor"
+                         * looks like a function call.
+                         */
                         <Cell
                             key={`${rowIndex}-${colIndex}`}
                             value ={cell.value}
@@ -79,8 +86,11 @@ const SudokuGrid = () => {
                     ))}
                 </div>
             ))}
+            <button onClick={toggleNotesMode}>
+                Notes ({isNotesMode ? 'On' : 'Off'})
+            </button>
         </div>
-    
-    )
-
+    );
 };
+
+export default SudokuGrid;
