@@ -1,7 +1,7 @@
 # Minis
 Small projects documenting my growth as I learn web development.
 
-## Flow
+## Event Flow
 1. A user selects a grid Cell
 2. They choose a value
 3. Cell's onChange triggers handleInputChange, which validates user input, checks if notes mode is on or not, and then sets the "backend" representation of value
