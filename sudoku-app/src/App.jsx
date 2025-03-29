@@ -1,6 +1,6 @@
 import React from 'react';
 import SudokuGrid from './components/SudokuGrid';
-//import './App.css';
+import './App.css';
 
 const App = () => {
   return (

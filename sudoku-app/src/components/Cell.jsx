@@ -7,7 +7,7 @@ import './Cell.css';
  * cell/square in the puzzle.
  * 
  * value - current displayed value
- * isEditable & isNoteMode - booleans
+ * isEditable & isNotesMode - booleans
  * onChange - callback function for when value changes
  * onSelect - callback function for when cell is selected
  * notes - array of notes
@@ -44,7 +44,7 @@ const Cell = ({ value, isEditable, isNotesMode, onChange, isSelected, onSelect, 
                 setCellNotes([...cellNotes, input].sort());
             }
         } else {
-            if(input == '' || input >= '1' && input <= '9') {
+            if(input === '' || (input >= '1' && input <= '9')) {
                 setInputValue(input);
                 onChange(input);
             }

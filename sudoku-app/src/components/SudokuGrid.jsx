@@ -11,11 +11,6 @@ import './SudokuGrid.css';
 */ 
 const SudokuGrid = () => {
 
-    // create variables and their default values
-    const [grid, setGrid] = useState(initialGrid);
-    const [selectedCell, setSelectedCell] = useState(null);
-    const [isNotesMode, setIsNotesMode ] = useState(false);
-
     /**
      * Initialize a 2D array to store the 9x9 grid of empty Cells.
      * Each cell of the grid is an object with value, isEditable, 
@@ -29,9 +24,14 @@ const SudokuGrid = () => {
      * This nested call is creating an array of 9 rows with 9 Cells
      * in each row.
      *  */
-    const initializeGrid = Array.from({ length: 9 }, () =>
+    const initialGrid = Array.from({ length: 9 }, () =>
         Array.from({ length: 9 }, () => ({ value: '', isEditable: true, notes: [] }))
     );
+
+    // create variables and their default values
+    const [grid, setGrid] = useState(initialGrid);
+    const [selectedCell, setSelectedCell] = useState(null);
+    const [isNotesMode, setIsNotesMode ] = useState(false);
 
     /**
      * Updates a specific Cell in the grid. Triggered by user input
