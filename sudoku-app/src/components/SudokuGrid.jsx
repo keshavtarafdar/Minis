@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Cell from './Cell';
+import './SudokuGrid.css';
 
 /**
  * Displays the current state of the puzzle, a 9x9 grid of Cells.

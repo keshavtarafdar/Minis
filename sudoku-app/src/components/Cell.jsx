@@ -1,13 +1,5 @@
-/**
- * A single "cell" in the Sudoku grid.
- * 
- * - either shows a number (1-9) or an empty cell
- * - allows user to input a number
- * - highlights the cell when selected
- * - support notes/pencil marks
- */
-
 import React, { useState } from 'react';
+import './Cell.css';
 
 /**
  * Components are functions that return JSX - a JSX element is a combination of JS
