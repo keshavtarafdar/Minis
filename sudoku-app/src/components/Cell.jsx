@@ -24,6 +24,13 @@ const Cell = ({ value, isEditable, isNotesMode, onChange, isSelected, onSelect, 
     const [cellNotes, setCellNotes] = useState(notes || []);
 
     /**
+     * Callback function for when a cell is selected - onSelect() 
+     * could be called directly within the Cell's return BUT that
+     * would be less flexible/adaptible to future changes.
+    */
+    const handleFocus = () => { onSelect(); };
+
+    /**
      * Triggered by the data structure's onChange -- grabs user input,
      * checks if it is a valid input, checks if notes mode is on, and then 
      * changes the "backend" representation of the Cell' value correspondingly
@@ -59,7 +66,7 @@ const Cell = ({ value, isEditable, isNotesMode, onChange, isSelected, onSelect, 
              * in a CSS file!
              */
             className={`cell ${isEditable ? 'editable' : ''} ${isSelected ? 'selected' : ''}`}
-            onClick={onSelect}
+            onClick={handleFocus}
         >
             {isNotesMode && isEditable ? ( // ternary operator!
                 <div className='notes'>
