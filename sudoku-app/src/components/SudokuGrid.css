@@ -1,47 +1,38 @@
 .sudoku-grid {
-    display: grid;
-    grid-template-columns: repeat(9, 40px); /* 9 columns of 40px width */
-    grid-template-rows: repeat(9, 40px); /* 9 rows of 40px height */
-    gap: 2px; /* between cells */
-    margin-bottom: 20px;
+    width: 400px;
+    margin: 0 auto; /* Centers grid horizontally */
 }
 
 .row {
-    display: contents;
-    /* This is a bit hard to explain but basically, since the grid is being
-    displayed as a grid - 9 columns - each row is being passed separately
-    and so we want these divs to be "passed up" without any formatting
-    straight to the grid above.
-  
-    display: contents effectively makes the <div class-'row'> invisible to
-    the grid layout, treating the Cell objects within as direct children
-    of the grid. */
+    display: flex; /* Lay out cells horizontally */
 }
 
 /* Targets every cell in the grid, adding default gray border. */
 .cell {
-    border: 1px solid darkgray;
+    border-right: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Targets every cell that is first in a group of 3 (ex. 1, 4, 7) */
-.cell:nth-child(3n+1) {
-    border-left: 3px solid black;
-}
-
-/* Targets every cell that is last in a group of 3 (ex. 3, 6, 9)*/
-.cell:nth-child(3n) {
+/* Remove the right border on the last cell of every row 
+and replace it with a thick border */
+.row .cell:last-child {
     border-right: 3px solid black;
 }
-
-/* Targets the first row of every 3-row block (1, 4, 7) */
-.row:nth-child(3n+1) .cell {
-    border-top: 3px solid black;
-}
-
-/* Targets the last row of every 3-row block (3, 6, 9) */
-.row:nth-child(3n) .cell {
+  
+/* Add a thick bottom border to every 3rd row 
+so rows 3, 6, and 9 have a thicker lower boundary */
+.sudoku-grid .row:nth-child(3) .cell,
+.sudoku-grid .row:nth-child(6) .cell,
+.sudoku-grid .row:nth-child(9) .cell {
     border-bottom: 3px solid black;
+}
+  
+/* For the vertical subgrid separation, add thicker right borders 
+to the cells in the 3rd and 6th positions of each row */
+.row .cell:nth-child(3),
+.row .cell:nth-child(6) {
+    border-right: 3px solid black;
 }
