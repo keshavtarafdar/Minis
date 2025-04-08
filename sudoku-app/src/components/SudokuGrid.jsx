@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Cell from './Cell';
 import './SudokuGrid.css';
+import { generatePuzzle } from '../utils/sudokuGen';
 
 /**
  * Displays the current state of the puzzle, a 9x9 grid of Cells.
@@ -11,25 +12,8 @@ import './SudokuGrid.css';
 */ 
 const SudokuGrid = () => {
 
-    /**
-     * Initialize a 2D array to store the 9x9 grid of empty Cells.
-     * Each cell of the grid is an object with value, isEditable, 
-     * and notes.
-     * 
-     * Array.from() used to create an array from an object with a 
-     * length property. The first parameter acts like an array with
-     * 9 empty slots, and the second parameter is a callback function
-     * called for each of the 9 elements.
-     * 
-     * This nested call is creating an array of 9 rows with 9 Cells
-     * in each row.
-     *  */
-    const initialGrid = Array.from({ length: 9 }, () =>
-        Array.from({ length: 9 }, () => ({ value: '', isEditable: true, notes: [] }))
-    );
-
     // create variables and their default values
-    const [grid, setGrid] = useState(initialGrid);
+    const [grid, setGrid] = useState(generatePuzzle('medium'));
     const [selectedCell, setSelectedCell] = useState(null);
     const [isNotesMode, setIsNotesMode ] = useState(false);
 
@@ -89,6 +73,9 @@ const SudokuGrid = () => {
                     ))}
                 </div>
             ))}
+            < button onClick={toggleNotesMode}>
+                Notes ({isNotesMode ? 'On' : 'Off'})
+            </button>
         </div>
     );
 };
