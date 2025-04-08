@@ -1,4 +1,4 @@
-import {getSudoku} from 'sudoku-gen';
+import { getSudoku } from 'sudoku-gen';
 
 /**
  * 
@@ -7,6 +7,14 @@ import {getSudoku} from 'sudoku-gen';
  * @returns 
  */
 function convertPuzzle(puzzleString) {
+    // Return an empty grid if library doesn't work
+    if (!puzzleString || puzzleString.length !== 81) {
+        console.error("Invalid puzzle string returned:", puzzleString);
+        return Array.from({ length: 9 }, () =>
+            Array.from({ length: 9 }, () => ({ value: '', isEditable: true, notes: [] }))
+        );
+    }
+
     const grid = [];
     for(let i = 0; i < 9; i++) {
         const row = [];
@@ -14,8 +22,8 @@ function convertPuzzle(puzzleString) {
             const index = i * 9 + j;
             const ch = puzzleString.charAt(index);
             row.push({
-                value: value,
-                isEditable: value === '-', /* Editable if the cell is empty */
+                value: ch === '-' ? '' : ch,
+                isEditable: ch === '-', /* Editable if the cell is empty */
                 notes: []
             });
         }
@@ -31,5 +39,6 @@ function convertPuzzle(puzzleString) {
  * @returns {Array} A 9x9 grid where each cell is an object.
  */
 export function generatePuzzle(difficulty = 'medium') {
-    return convertPuzzle(getSudoku(difficulty));
+    const sudoku = getSudoku(difficulty);
+    return convertPuzzle(sudoku.puzzle);
 }
